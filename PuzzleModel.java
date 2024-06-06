@@ -2,14 +2,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.swing.JButton;
 
 public class PuzzleModel {
 
     private int[][] playground;
     private int emptyColumn;
     private int emptyRow;
-    private final int BORDER = 4;
+    final int BORDER = 4;
 
     public PuzzleModel() {
         
@@ -62,6 +61,14 @@ public class PuzzleModel {
     public int[][] getPlayground() {
         return playground;
     }
+    public int getEmptyColumn() {
+        return emptyColumn;
+    }
+    public int getEmptyRow() {
+        return emptyRow;
+    }
+    
+    
 
 
 }

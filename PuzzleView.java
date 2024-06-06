@@ -1,11 +1,7 @@
-import java.util.*;
 import javax.swing.*;
-
 import java.awt.GridLayout;
 import java.awt.Font;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.event.ActionListener;
 
 public class PuzzleView extends JFrame {
 
@@ -56,7 +52,7 @@ public class PuzzleView extends JFrame {
             }
         }
     }
-    
+
     public boolean pieceInRightPosition(int row, int column, int[][] playground) {
         if (row == BORDER - 1 && column == BORDER - 1) {
             return playground[row][column] == 0;

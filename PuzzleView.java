@@ -5,44 +5,53 @@ import java.awt.GridLayout;
 import java.awt.Font;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionListener;
 
 public class PuzzleView extends JFrame {
-    private static final Font FONT = new Font("Eurostile", Font.BOLD, 28);
 
-    private JButton[][] buttons = new JButton[4][4];
+    JButton[][] buttons;
+    final int BORDER = 4;
+    private JPanel playgroundPanel;
+    private final Font FONT;
+
 
     public PuzzleView() {
-        // name of the window
         super("Puzzle");
+        FONT = new Font("Eurostile", Font.BOLD, 30);
         this.setSize(600, 600);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        JPanel pieces = new JPanel(new GridLayout(4, 4, 7, 7));
-        int elementsInPieces = 0;
-        List<Integer> randomNumbers = Puzzle.randomIntegers();
-        for (int row = 0; row < buttons.length; row++) {
-            for (int column = 0; column < buttons.length; column++) {
-                buttons[row][column] = new JButton();
-                // check if 15 numbers are in already if so create the empty piece
-                if (elementsInPieces < randomNumbers.size()) {
-                    buttons[row][column].setText(String.valueOf(randomNumbers.get(elementsInPieces)));
-                    buttons[row][column].setFont(FONT);
-                    buttons[row][column].setForeground(Color.MAGENTA);
-                    pieces.add(buttons[row][column]);
-                    elementsInPieces++;
-                } else {
-                    buttons[row][column].setText("");
-                    pieces.add(buttons[row][column]);
-                }
+    
+
+    
+        playgroundPanel = new JPanel(new GridLayout(BORDER,BORDER,7,7));
+        playgroundPanel.setSize(650,650);
+        buttons = new JButton[BORDER][BORDER];
+        for (int i = 0; i < BORDER; i++) {
+            for (int j = 0; j < BORDER; j++) {
+                JButton button = new JButton();
+                button.setFont(FONT);
+                button.setText("2");
+                buttons[i][j] = button;
+                playgroundPanel.add(button);
             }
         }
 
-        this.add(pieces, BorderLayout.CENTER);
-    }
+        add(playgroundPanel);
 
-    public JButton[][] getButtons() {
-        return buttons;
     }
+    
 
+    public void updateView(int[][] board) {
+        for (int i = 0; i < BORDER; i++) {
+            for (int j = 0; j < BORDER; j++) {
+                if (board[i][j] == 0) {
+                    buttons[i][j].setText("");
+                } else {
+                    buttons[i][j].setText(String.valueOf(board[i][j]));
+                }
+            }
+        }
+    }
     // public void show(Puzzle puzzle) {
     // }
 }

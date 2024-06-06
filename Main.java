@@ -3,12 +3,12 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            Puzzle puzzle = new Puzzle();
+            PuzzleModel puzzle = new PuzzleModel();
             PuzzleView view = new PuzzleView();
-            view.setVisible(true);
+        
             PuzzleController controller = new PuzzleController(puzzle, view);
-           System.out.println(controller.getY());
             controller.handleEvents();
+            view.setVisible(true);
         });
     }
 }

@@ -41,17 +41,29 @@ public class PuzzleView extends JFrame {
     }
     
 
-    public void updateView(int[][] board) {
+    public void updateView(int[][] playground) {
         for (int i = 0; i < BORDER; i++) {
             for (int j = 0; j < BORDER; j++) {
-                if (board[i][j] == 0) {
+                if (playground[i][j] == 0) {
                     buttons[i][j].setText("");
                 } else {
-                    buttons[i][j].setText(String.valueOf(board[i][j]));
+                    buttons[i][j].setText(String.valueOf(playground[i][j]));
+                    buttons[i][j].setForeground(Color.MAGENTA);
+                    if (pieceInRightPosition(i, j, playground)) {
+                        buttons[i][j].setForeground(Color.BLACK);
+                    }
                 }
             }
         }
     }
-    // public void show(Puzzle puzzle) {
-    // }
+    
+    public boolean pieceInRightPosition(int row, int column, int[][] playground) {
+        if (row == BORDER - 1 && column == BORDER - 1) {
+            return playground[row][column] == 0;
+        } else {
+            int correctValue = row * BORDER + column + 1;
+            return playground[row][column] == correctValue;
+        }
+    }
+    
 }

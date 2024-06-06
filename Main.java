@@ -1,11 +1,13 @@
-import javax.swing.JButton;
+import javax.swing.*;
 
 public class Main {
-
     public static void main(String[] args) {
-        JButton[][] buttons = new JButton[4][4];
-        System.out.println(buttons.length);
-        PuzzleView game = new PuzzleView();
-        game.setVisible(true);
+        SwingUtilities.invokeLater(() -> {
+            Puzzle puzzle = new Puzzle();
+            PuzzleView view = new PuzzleView();
+            view.setVisible(true);
+            PuzzleController controller = new PuzzleController(puzzle, view);
+            controller.handleEvents();
+        });
     }
 }

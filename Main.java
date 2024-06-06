@@ -7,6 +7,7 @@ public class Main {
             PuzzleView view = new PuzzleView();
             view.setVisible(true);
             PuzzleController controller = new PuzzleController(puzzle, view);
+           System.out.println(controller.getY());
             controller.handleEvents();
         });
     }

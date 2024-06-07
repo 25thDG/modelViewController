@@ -46,7 +46,7 @@ public class PuzzleView extends JFrame {
                     buttons[i][j].setText(String.valueOf(playground[i][j]));
                     buttons[i][j].setForeground(Color.MAGENTA);
                     if (pieceInRightPosition(i, j, playground)) {
-                        buttons[i][j].setForeground(Color.BLACK);
+                        buttons[i][j].setForeground(Color.GREEN);
                     }
                 }
             }

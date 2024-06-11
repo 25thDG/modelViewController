@@ -54,10 +54,11 @@ public class PuzzleModel {
             }
         }
     }
+
     public void randomSwapTiles() {
         Random r = new Random();
-        for (int i = 0; i < 10000; i++)
-        swapTiles(r.nextInt(0,4), r.nextInt(0,4));
+        for (int i = 0; i < 10000 * playground.length; i++)
+            swapTiles(r.nextInt(0, playground.length), r.nextInt(0, playground.length));
     }
 
     public int[][] getPlayground() {
@@ -83,9 +84,9 @@ public class PuzzleModel {
 
     private void fillPlaygroundCorrect() {
         int number = 1;
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                if (number <= 15) {
+        for (int i = 0; i < playground.length; i++) {
+            for (int j = 0; j < playground.length; j++) {
+                if (number <= playground.length * playground.length - 1) {
                     playground[i][j] = number;
                     number++;
                 } else {

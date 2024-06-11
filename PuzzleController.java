@@ -4,9 +4,10 @@ import javax.swing.*;
 public class PuzzleController {
     private PuzzleModel model;
     private PuzzleView view;
-    final int BORDER = 4;
+    final int BORDER;
 
-    public PuzzleController(PuzzleModel model, PuzzleView view) {
+    public PuzzleController(final int BORDER,PuzzleModel model, PuzzleView view) {
+        this.BORDER = BORDER;
         this.model = model;
         this.view = view;
         handleEvents();

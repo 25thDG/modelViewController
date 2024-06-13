@@ -25,53 +25,13 @@ public class PuzzleModel {
         }
     }
 
-    // Random int generator for the Game
-    static List<Integer> randomIntegers() {
-        List<Integer> rndomIntegers = new ArrayList<>();
-        Random r = new Random();
-        int i = 0;
-        int nextInt = 1;
-        while (i != 16) {
-            nextInt = r.nextInt(0, 16);
-            if (!rndomIntegers.contains(nextInt)) {
-                rndomIntegers.add(nextInt);
-                i++;
-            }
-        }
-        return rndomIntegers;
-    }
-
-    public void fillPlayground() {
-        int index = 0;
-        List<Integer> randomIntegers = randomIntegers();
-        for (int row = 0; row < playground.length; row++) {
-            for (int column = 0; column < playground.length; column++) {
-                playground[row][column] = randomIntegers.get(index++);
-                if (playground[row][column] == 0) {
-                    emptyRow = row;
-                    emptyColumn = column;
-                }
-            }
-        }
-    }
-
-    public void randomSwapTiles() {
-        Random r = new Random();
-        for (int i = 0; i < 10000 * playground.length; i++)
-            swapTiles(r.nextInt(0, playground.length), r.nextInt(0, playground.length));
-    }
+    
 
     public int[][] getPlayground() {
         return playground;
     }
 
-    public int getEmptyColumn() {
-        return emptyColumn;
-    }
-
-    public int getEmptyRow() {
-        return emptyRow;
-    }
+   
 
     public static boolean pieceInRightPosition(int row, int column, int[][] playground) {
         if (row == playground.length - 1 && column == playground.length - 1) {
@@ -82,6 +42,7 @@ public class PuzzleModel {
         }
     }
 
+    //Before tbe game starts all the pieces are in the right order to ensure that the game is solvable
     private void fillPlaygroundCorrect() {
         int number = 1;
         for (int i = 0; i < playground.length; i++) {
@@ -97,5 +58,12 @@ public class PuzzleModel {
             }
         }
 
+    }
+    //After the field is initialized
+    //the pieces are randomly swapped at the beginning.
+    public void randomSwapTiles() {
+        Random r = new Random();
+        for (int i = 0; i < 10000 * playground.length; i++)
+            swapTiles(r.nextInt(0, playground.length), r.nextInt(0, playground.length));
     }
 }

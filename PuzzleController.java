@@ -11,7 +11,7 @@ public class PuzzleController {
         this.model = model;
         this.view = view;
         handleEvents();
-        view.updateView(model.getPlayground());
+        view.updateView(model);
     }
     
 
@@ -24,7 +24,7 @@ public class PuzzleController {
                 buttons[row][column].addActionListener(ev -> {
                     //After every click reload the view
                     model.swapTiles(frow, fcolumn);
-                    view.updateView(model.getPlayground());
+                    view.updateView(model);
                     
 
                 });

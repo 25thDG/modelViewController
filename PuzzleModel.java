@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class PuzzleModel {
@@ -33,7 +31,7 @@ public class PuzzleModel {
 
    
 
-    public static boolean pieceInRightPosition(int row, int column, int[][] playground) {
+    public boolean pieceInRightPosition(int row, int column) {
         if (row == playground.length - 1 && column == playground.length - 1) {
             return playground[row][column] == 0;
         } else {

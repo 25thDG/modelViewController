@@ -33,15 +33,15 @@ public class PuzzleView extends JFrame {
     }
     
 
-    public void updateView(int[][] playground) {
+    public void updateView(PuzzleModel model) {
         for (int i = 0; i < buttons.length; i++) {
             for (int j = 0; j < buttons.length; j++) {
-                if (playground[i][j] == 0) {
+                if (model.getPlayground()[i][j] == 0) {
                     buttons[i][j].setText("");
                 } else {
-                    buttons[i][j].setText(String.valueOf(playground[i][j]));
+                    buttons[i][j].setText(String.valueOf(model.getPlayground()[i][j]));
                     buttons[i][j].setForeground(Color.MAGENTA);
-                    if (PuzzleModel.pieceInRightPosition(i, j, playground)) {
+                    if (model.pieceInRightPosition(i, j)) {
                         buttons[i][j].setForeground(Color.GREEN);
                     }
                 }
